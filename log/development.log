@@ -1,0 +1,200 @@
+Started GET "/groups" for ::1 at 2021-12-16 00:06:02 -0300
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by GroupsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering groups/index.html.erb within layouts/application
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT "groups".* FROM "groups"[0m
+  ↳ app/views/groups/index.html.erb:18
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "concerts" WHERE "concerts"."group_id" = ? AND "concerts"."group_id" = ?[0m  [["group_id", 1], ["group_id", 1]]
+  ↳ app/models/group.rb:12:in `total_concerts'
+  [1m[36mConcert Load (0.3ms)[0m  [1m[34mSELECT "concerts".* FROM "concerts" WHERE "concerts"."group_id" = ? AND "concerts"."group_id" = ?[0m  [["group_id", 1], ["group_id", 1]]
+  ↳ app/models/group.rb:17:in `map'
+  Rendered groups/index.html.erb within layouts/application (Duration: 31.2ms | Allocations: 10160)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 54.1ms | Allocations: 15830)
+Completed 200 OK in 77ms (Views: 55.3ms | ActiveRecord: 1.7ms | Allocations: 21888)
+
+
+Started GET "/groups" for ::1 at 2021-12-16 00:06:04 -0300
+Processing by GroupsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering groups/index.html.erb within layouts/application
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT "groups".* FROM "groups"[0m
+  ↳ app/views/groups/index.html.erb:18
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "concerts" WHERE "concerts"."group_id" = ? AND "concerts"."group_id" = ?[0m  [["group_id", 1], ["group_id", 1]]
+  ↳ app/models/group.rb:12:in `total_concerts'
+  [1m[36mConcert Load (0.3ms)[0m  [1m[34mSELECT "concerts".* FROM "concerts" WHERE "concerts"."group_id" = ? AND "concerts"."group_id" = ?[0m  [["group_id", 1], ["group_id", 1]]
+  ↳ app/models/group.rb:17:in `map'
+  Rendered groups/index.html.erb within layouts/application (Duration: 10.2ms | Allocations: 2451)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.5ms | Allocations: 5369)
+Completed 200 OK in 21ms (Views: 18.6ms | ActiveRecord: 0.6ms | Allocations: 5853)
+
+
+Started GET "/" for ::1 at 2021-12-16 00:06:08 -0300
+Processing by GroupsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering groups/index.html.erb within layouts/application
+  [1m[36mGroup Load (0.1ms)[0m  [1m[34mSELECT "groups".* FROM "groups"[0m
+  ↳ app/views/groups/index.html.erb:18
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "concerts" WHERE "concerts"."group_id" = ? AND "concerts"."group_id" = ?[0m  [["group_id", 1], ["group_id", 1]]
+  ↳ app/models/group.rb:12:in `total_concerts'
+  [1m[36mConcert Load (0.2ms)[0m  [1m[34mSELECT "concerts".* FROM "concerts" WHERE "concerts"."group_id" = ? AND "concerts"."group_id" = ?[0m  [["group_id", 1], ["group_id", 1]]
+  ↳ app/models/group.rb:17:in `map'
+  Rendered groups/index.html.erb within layouts/application (Duration: 11.7ms | Allocations: 2449)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 52.9ms | Allocations: 5367)
+Completed 200 OK in 63ms (Views: 53.1ms | ActiveRecord: 0.6ms | Allocations: 5847)
+
+
+Started GET "/concerts/new" for ::1 at 2021-12-16 00:06:18 -0300
+Processing by ConcertsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering concerts/new.html.erb within layouts/application
+  [1m[36mGroup Load (0.1ms)[0m  [1m[34mSELECT "groups".* FROM "groups"[0m
+  ↳ app/views/concerts/_form.html.erb:33
+  Rendered concerts/_form.html.erb (Duration: 11.4ms | Allocations: 4819)
+  Rendered concerts/new.html.erb within layouts/application (Duration: 12.9ms | Allocations: 5238)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 20.5ms | Allocations: 8207)
+Completed 200 OK in 32ms (Views: 22.7ms | ActiveRecord: 0.4ms | Allocations: 12183)
+
+
+Started POST "/concerts" for ::1 at 2021-12-16 00:06:53 -0300
+Processing by ConcertsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "concert"=>{"event(1i)"=>"2021", "event(2i)"=>"12", "event(3i)"=>"31", "tickets"=>"500000", "duration"=>"90", "group_id"=>"1"}, "commit"=>"Create Concert"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/concerts_controller.rb:30:in `block in create'
+  [1m[36mConcert Create (0.5ms)[0m  [1m[32mINSERT INTO "concerts" ("event", "tickets", "duration", "group_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["event", "2021-12-31"], ["tickets", 500000], ["duration", 90], ["group_id", 1], ["created_at", "2021-12-16 03:06:53.147313"], ["updated_at", "2021-12-16 03:06:53.147313"]]
+  ↳ app/controllers/concerts_controller.rb:30:in `block in create'
+  [1m[36mTRANSACTION (80.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/concerts_controller.rb:30:in `block in create'
+Redirected to http://localhost:3000/concerts/1
+Completed 302 Found in 97ms (ActiveRecord: 81.1ms | Allocations: 5663)
+
+
+Started GET "/concerts/1" for ::1 at 2021-12-16 00:06:53 -0300
+Processing by ConcertsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mConcert Load (0.3ms)[0m  [1m[34mSELECT "concerts".* FROM "concerts" WHERE "concerts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/concerts_controller.rb:65:in `set_concert'
+  Rendering layout layouts/application.html.erb
+  Rendering concerts/show.html.erb within layouts/application
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/concerts/show.html.erb:20
+  Rendered concerts/show.html.erb within layouts/application (Duration: 11.8ms | Allocations: 5059)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 19.8ms | Allocations: 7881)
+Completed 200 OK in 25ms (Views: 20.5ms | ActiveRecord: 0.4ms | Allocations: 9242)
+
+
+Started GET "/concerts" for ::1 at 2021-12-16 00:06:55 -0300
+Processing by ConcertsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering concerts/index.html.erb within layouts/application
+  [1m[36mConcert Load (0.2ms)[0m  [1m[34mSELECT "concerts".* FROM "concerts"[0m
+  ↳ app/views/concerts/index.html.erb:17
+  [1m[36mGroup Load (0.1ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/concerts/index.html.erb:22
+  Rendered concerts/index.html.erb within layouts/application (Duration: 7.5ms | Allocations: 1949)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 4879)
+Completed 200 OK in 15ms (Views: 13.2ms | ActiveRecord: 0.3ms | Allocations: 5477)
+
+
+Started GET "/concerts/1" for ::1 at 2021-12-16 00:07:06 -0300
+Processing by ConcertsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mConcert Load (0.1ms)[0m  [1m[34mSELECT "concerts".* FROM "concerts" WHERE "concerts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/concerts_controller.rb:65:in `set_concert'
+  Rendering layout layouts/application.html.erb
+  Rendering concerts/show.html.erb within layouts/application
+  [1m[36mGroup Load (0.1ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/concerts/show.html.erb:20
+  Rendered concerts/show.html.erb within layouts/application (Duration: 4.0ms | Allocations: 872)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | Allocations: 3788)
+Completed 200 OK in 16ms (Views: 12.7ms | ActiveRecord: 0.3ms | Allocations: 4788)
+
+
+Started GET "/concerts" for ::1 at 2021-12-16 00:07:08 -0300
+Processing by ConcertsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering concerts/index.html.erb within layouts/application
+  [1m[36mConcert Load (0.1ms)[0m  [1m[34mSELECT "concerts".* FROM "concerts"[0m
+  ↳ app/views/concerts/index.html.erb:17
+  [1m[36mGroup Load (0.1ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/concerts/index.html.erb:22
+  Rendered concerts/index.html.erb within layouts/application (Duration: 12.3ms | Allocations: 1611)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 19.4ms | Allocations: 4539)
+Completed 200 OK in 22ms (Views: 20.1ms | ActiveRecord: 0.3ms | Allocations: 5001)
+
+
+Started GET "/" for ::1 at 2021-12-16 00:07:09 -0300
+Processing by GroupsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering groups/index.html.erb within layouts/application
+  [1m[36mGroup Load (0.1ms)[0m  [1m[34mSELECT "groups".* FROM "groups"[0m
+  ↳ app/views/groups/index.html.erb:18
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "concerts" WHERE "concerts"."group_id" = ? AND "concerts"."group_id" = ?[0m  [["group_id", 1], ["group_id", 1]]
+  ↳ app/models/group.rb:12:in `total_concerts'
+  [1m[36mConcert Load (0.1ms)[0m  [1m[34mSELECT "concerts".* FROM "concerts" WHERE "concerts"."group_id" = ? AND "concerts"."group_id" = ?[0m  [["group_id", 1], ["group_id", 1]]
+  ↳ app/models/group.rb:17:in `map'
+  Rendered groups/index.html.erb within layouts/application (Duration: 9.0ms | Allocations: 2474)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.3ms | Allocations: 5393)
+Completed 200 OK in 21ms (Views: 19.1ms | ActiveRecord: 0.5ms | Allocations: 5868)
+
+
+Started GET "/" for ::1 at 2021-12-16 00:08:31 -0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by GroupsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering groups/index.html.erb within layouts/application
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT "groups".* FROM "groups"[0m
+  ↳ app/views/groups/index.html.erb:18
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "concerts" WHERE "concerts"."group_id" = ? AND "concerts"."group_id" = ?[0m  [["group_id", 1], ["group_id", 1]]
+  ↳ app/models/group.rb:12:in `total_concerts'
+  [1m[36mConcert Load (0.2ms)[0m  [1m[34mSELECT "concerts".* FROM "concerts" WHERE "concerts"."group_id" = ? AND "concerts"."group_id" = ?[0m  [["group_id", 1], ["group_id", 1]]
+  ↳ app/models/group.rb:17:in `map'
+  Rendered groups/index.html.erb within layouts/application (Duration: 29.3ms | Allocations: 13904)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.5ms | Allocations: 19572)
+Completed 200 OK in 58ms (Views: 41.0ms | ActiveRecord: 1.8ms | Allocations: 25750)
+
+
+Started GET "/" for ::1 at 2021-12-16 00:08:33 -0300
+Processing by GroupsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering groups/index.html.erb within layouts/application
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT "groups".* FROM "groups"[0m
+  ↳ app/views/groups/index.html.erb:18
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "concerts" WHERE "concerts"."group_id" = ? AND "concerts"."group_id" = ?[0m  [["group_id", 1], ["group_id", 1]]
+  ↳ app/models/group.rb:12:in `total_concerts'
+  [1m[36mConcert Load (0.1ms)[0m  [1m[34mSELECT "concerts".* FROM "concerts" WHERE "concerts"."group_id" = ? AND "concerts"."group_id" = ?[0m  [["group_id", 1], ["group_id", 1]]
+  ↳ app/models/group.rb:17:in `map'
+  Rendered groups/index.html.erb within layouts/application (Duration: 12.9ms | Allocations: 2463)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 20.8ms | Allocations: 5381)
+Completed 200 OK in 23ms (Views: 21.4ms | ActiveRecord: 0.6ms | Allocations: 5864)
+
+
+Started GET "/" for ::1 at 2021-12-16 00:08:41 -0300
+Processing by GroupsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering groups/index.html.erb within layouts/application
+  [1m[36mGroup Load (0.1ms)[0m  [1m[34mSELECT "groups".* FROM "groups"[0m
+  ↳ app/views/groups/index.html.erb:18
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "concerts" WHERE "concerts"."group_id" = ? AND "concerts"."group_id" = ?[0m  [["group_id", 1], ["group_id", 1]]
+  ↳ app/models/group.rb:12:in `total_concerts'
+  [1m[36mConcert Load (0.2ms)[0m  [1m[34mSELECT "concerts".* FROM "concerts" WHERE "concerts"."group_id" = ? AND "concerts"."group_id" = ?[0m  [["group_id", 1], ["group_id", 1]]
+  ↳ app/models/group.rb:17:in `map'
+  Rendered groups/index.html.erb within layouts/application (Duration: 9.7ms | Allocations: 2461)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.9ms | Allocations: 5391)
+Completed 200 OK in 17ms (Views: 16.1ms | ActiveRecord: 0.5ms | Allocations: 5874)
+
+
